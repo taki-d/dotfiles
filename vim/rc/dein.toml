@@ -1,0 +1,22 @@
+
+#====================================
+#basic
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+"[[plugins]]
+"repo = 'nathanaelkana/vim-indent-guides'
+
+
+#====================================
+#lang
+
+#====================================
+
