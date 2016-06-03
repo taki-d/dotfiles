@@ -45,4 +45,4 @@ if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
-runtime! ~/.vim/rc/*vim
+runtime! ~/.vim/rc/*.vim

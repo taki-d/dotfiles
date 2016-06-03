@@ -6,6 +6,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo  = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
 repo = 'Shougo/vimshell'
 
 [[plugins]]
@@ -16,6 +20,7 @@ repo = 'Shougo/unite.vim'
 
 [[plugins]] #ファイルのツリー表示
 repo = 'Shougo/vimfiler'
+
 [[plugins]] #ステータスラインの表示強化
 repo = 'vim-airline/vim-airline'
 
@@ -112,3 +117,6 @@ repo = 'tomasr/molokai'
 
 [[plugins]]
 repo = 'vim-scripts/rdark'
+
+[[plugins]]
+repo = 'badwolf'
