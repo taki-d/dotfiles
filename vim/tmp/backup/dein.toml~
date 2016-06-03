@@ -1,0 +1,68 @@
+
+#====================================
+#basic
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimshell'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]] #インデントの可視化
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]] #ファイルのtree表示
+repo = 'scrooloose/nerdtree'
+
+[[plugins]] #囲むやつ全般の編集の効率化
+repo = 'tpope/vim-surround'
+
+[[plugins]] #行末のスペースの可視化
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]] #ステータスラインの表示強化
+repo = 'itchyny/lightline.vim'
+
+[[plugins]] #vimからgitの使用
+repo = 'tpope/vim-fugitive'
+
+#====================================
+#lang
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+#====================================
+#colorscheme
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'vim-scripts/twilight'
+
+[[plugins]]
+repo = 'jonathanfilip/vim-lucius'
+
+[[plugins]]
+repo = 'jpo/vim-railscasts-theme'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'vim-scripts/Wombat'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'vim-scripts/rdark'
