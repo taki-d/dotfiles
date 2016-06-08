@@ -5,7 +5,7 @@ set showmatch "括弧入力時の対応する括弧を表示
 set tabstop=4 "インデントをスペース4つ分に設定
 set smartindent "オートインデント
 syntax on "ハイライトの有効
-colorscheme 
+colorscheme	molokai 
 
 "検索の設定
 set ignorecase "大文字/小文字の区別なく検索する

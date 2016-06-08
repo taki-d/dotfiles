@@ -20,6 +20,7 @@ repo = 'Shougo/unite.vim'
 
 [[plugins]] #ファイルのツリー表示
 repo = 'Shougo/vimfiler'
+
 [[plugins]] #ステータスラインの表示強化
 repo = 'vim-airline/vim-airline'
 
