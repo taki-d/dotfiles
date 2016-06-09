@@ -1,3 +1,2 @@
-doc/tags
-*.lock
-.vim-flavor
+doc/tags*
+*.pyc

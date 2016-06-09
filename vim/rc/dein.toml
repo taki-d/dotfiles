@@ -21,17 +21,11 @@ repo = 'Shougo/unite.vim'
 [[plugins]] #ファイルのツリー表示
 repo = 'Shougo/vimfiler'
 
-[[plugins]] #ステータスラインの表示強化
-repo = 'vim-airline/vim-airline'
-
 [[plugins]] #vimからgitの使用
 repo = 'tpope/vim-fugitive'
 
 [[plugins]] #Unite.vimで最近表示したファイルの表示
 repo = 'Shougo/neomru.vim'
-
-[[plugins]] #Gitを便利にする
-repo = 'tpope/vim-fugitive'
 
 [[plugins]] #即時実行
 repo = 'thinca/vim-quickrun'

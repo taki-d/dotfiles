@@ -21,12 +21,6 @@ repo = 'Shougo/unite.vim'
 [[plugins]] #ファイルのツリー表示
 repo = 'Shougo/vimfiler'
 
-[[plugins]] #ステータスラインの表示強化
-repo = 'vim-airline/vim-airline'
-
-#[[plugins]] #ステータスラインの表示強化
-#repo = 'itchyny/lightline.vim'
-
 [[plugins]] #vimからgitの使用
 repo = 'tpope/vim-fugitive'
 
@@ -58,7 +52,10 @@ repo = 'Shougo/neocomplete.vim'
 repo = 'tomtom/tcomment_vim'
 
 [[plugins]] #ステータスラインの表示強化
-repo = 'vim-airline/vim-airline'
+repo = 'itchyny/lightline.vim'
+
+#[[plugins]] #ステータスラインの表示強化
+#repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'Shougo/neocomplcache.vim'

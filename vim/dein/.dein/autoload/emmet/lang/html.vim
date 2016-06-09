@@ -375,14 +375,14 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
             let last.pos += 1
           endif
         elseif len(n)
-          let start = 0
+          let st = 0
           for nc in range(len(last.child))
             if last.child[nc].block
-              let start = nc
+              let st = nc
               break
             endif
           endfor
-          let cl = last.child[nc:]
+          let cl = last.child[st :]
           let cls = []
           for c in range(n[1:])
             for cc in cl
@@ -394,8 +394,8 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
             endfor
             let cls += deepcopy(cl)
           endfor
-          if nc > 0
-            let last.child = last.child[:nc-1] + cls
+          if st > 0
+            let last.child = last.child[:st-1] + cls
           else
             let last.child = cls
           endif
@@ -514,9 +514,23 @@ function! emmet#lang#html#toString(settings, current, type, inline, filters, ite
           if len(Val) > 0
             let Val .= ' '
           endif
-          if _val =~# '^_'
-            let lead = vals[0]
-            let Val .= lead . _val
+          if _val =~# '_'
+            if _val =~# '^_'
+              if has_key(current.parent.attr, 'class')
+                let lead = current.parent.attr["class"]
+                if _val =~# '^__'
+                  let Val .= lead . _val
+                else
+                  let Val .= lead . ' ' . lead . _val
+                endif
+              else
+                let b = split(vals[0], '_')[0]
+                let Val .= lead . _val
+              endif
+            else
+              let lead = split(vals[0], '_')[0]
+              let Val .= lead . ' ' . _val
+            endif
           elseif _val =~# '^-'
             if len(lead) == 0
               let pattr = current.parent.attr

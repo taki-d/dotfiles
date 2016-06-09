@@ -1,0 +1,7 @@
+
+
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
+set background = dark
+
