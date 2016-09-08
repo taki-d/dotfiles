@@ -393,6 +393,7 @@ function! dein#util#_end() abort "{{{
   endfor
 
   if !has('vim_starting')
+    call dein#call_hook('add')
     call dein#call_hook('source')
     call dein#call_hook('post_source')
   endif
@@ -520,13 +521,17 @@ function! dein#util#_split(expr) abort "{{{
 endfunction"}}}
 
 function! dein#util#_redir(cmd) abort "{{{
-  let [save_verbose, save_verbosefile] = [&verbose, &verbosefile]
-  set verbose=0 verbosefile=
-  redir => res
-  silent! execute a:cmd
-  redir END
-  let [&verbose, &verbosefile] = [save_verbose, save_verbosefile]
-  return res
+  if exists('*capture')
+    return capture(a:cmd)
+  else
+    let [save_verbose, save_verbosefile] = [&verbose, &verbosefile]
+    set verbose=0 verbosefile=
+    redir => res
+    silent! execute a:cmd
+    redir END
+    let [&verbose, &verbosefile] = [save_verbose, save_verbosefile]
+    return res
+  endif
 endfunction"}}}
 
 function! dein#util#_get_lazy_plugins() abort "{{{

@@ -2,8 +2,8 @@
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-09-17.
-" @Last Change: 2016-05-05.
-" @Revision:    1854
+" @Last Change: 2016-07-03.
+" @Revision:    1857
 
 " call tlog#Log('Load: '. expand('<sfile>')) " vimtlib-sfile
 if exists(':Tlibtrace') != 2
@@ -173,28 +173,30 @@ if !exists('g:tcommentSyntaxMap')
     " mapped onto the corresponding filetype.
     " :read: let g:tcommentSyntaxMap = {...}   "{{{2
     let g:tcommentSyntaxMap = {
-            \ 'erubyExpression':   'ruby',
-            \ 'vimMzSchemeRegion': 'scheme',
-            \ 'vimPerlRegion':     'perl',
-            \ 'vimPythonRegion':   'python',
-            \ 'vimRubyRegion':     'ruby',
-            \ 'vimTclRegion':      'tcl',
-            \ 'Delimiter': {
-            \     'filetype': {
-            \         'php': 'php',
-            \     },
-            \ },
-            \ 'phpRegionDelimiter': {
-            \     'prevnonblank': [
-            \         {'match': '<?php', 'filetype': 'php'},
-            \         {'match': '?>', 'filetype': 'html'},
-            \     ],
-            \     'nextnonblank': [
-            \         {'match': '?>', 'filetype': 'php'},
-            \         {'match': '<?php', 'filetype': 'html'},
-            \     ],
-            \ },
-            \ }
+                \ 'bladeEcho':          'php',
+                \ 'bladePhpParenBlock': 'php',
+                \ 'erubyExpression':    'ruby',
+                \ 'vimMzSchemeRegion':  'scheme',
+                \ 'vimPerlRegion':      'perl',
+                \ 'vimPythonRegion':    'python',
+                \ 'vimRubyRegion':      'ruby',
+                \ 'vimTclRegion':       'tcl',
+                \ 'Delimiter': {
+                \     'filetype': {
+                \         'php': 'php',
+                \     },
+                \ },
+                \ 'phpRegionDelimiter': {
+                \     'prevnonblank': [
+                \         {'match': '<?php', 'filetype': 'php'},
+                \         {'match': '?>', 'filetype': 'html'},
+                \     ],
+                \     'nextnonblank': [
+                \         {'match': '?>', 'filetype': 'php'},
+                \         {'match': '<?php', 'filetype': 'html'},
+                \     ],
+                \ },
+                \ }
 endif
 
 if !exists('g:tcomment#replacements_c')
@@ -393,7 +395,7 @@ call tcomment#DefineType('asciidoc',         '// %s'            )
 call tcomment#DefineType('asm',              '; %s'             )
 call tcomment#DefineType('asterisk',         '; %s'             )
 call tcomment#DefineType('blade',            '{{-- %s --}}'     )
-call tcomment#DefineType('blade_block',      '{{-- %s --}}'     )
+call tcomment#DefineType('blade_block',      '{{--%s--}}'       )
 call tcomment#DefineType('blade_inline',     '{{-- %s --}}'     )
 call tcomment#DefineType('c',                tcomment#GetLineC())
 call tcomment#DefineType('c_block',          g:tcommentBlockC   )
@@ -498,8 +500,8 @@ call tcomment#DefineType('lynx',             '# %s'             )
 call tcomment#DefineType('m4',               'dnl %s'           )
 call tcomment#DefineType('mail',             '> %s'             )
 call tcomment#DefineType('make',             '# %s'             )
-call tcomment#DefineType('markdown',         "<!--- %s --->"    )
-call tcomment#DefineType('markdown_block',   "<!---%s--->\n  "  )
+call tcomment#DefineType('markdown',         "<!-- %s -->"    )
+call tcomment#DefineType('markdown_block',   "<!--%s-->\n  "  )
 call tcomment#DefineType('markdown.pandoc',  '<!--- %s --->'    )
 call tcomment#DefineType('markdown.pandoc_block', "<!---%s--->\n  ")
 call tcomment#DefineType('matlab',           '%% %s'            )
@@ -533,6 +535,7 @@ call tcomment#DefineType('php_block',        g:tcommentBlockC   )
 call tcomment#DefineType('php_inline',       g:tcommentInlineC  )
 call tcomment#DefineType('po',               '# %s'             )
 call tcomment#DefineType('prolog',           '%% %s'            )
+call tcomment#DefineType('proto',            '// %s'            )
 call tcomment#DefineType('puppet',           '# %s'             )
 call tcomment#DefineType('purescript',       '-- %s'            )
 call tcomment#DefineType('purescript_block', "{-%s-}\n   "      )

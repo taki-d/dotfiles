@@ -54,8 +54,8 @@ repo = 'itchyny/lightline.vim'
 #[[plugins]] #ステータスラインの表示強化
 #repo = 'vim-airline/vim-airline'
 
-[[plugins]]
-repo = 'Shougo/neocomplcache.vim'
+#[[plugins]]
+#repo = 'Shougo/neocomplcache.vim'
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
