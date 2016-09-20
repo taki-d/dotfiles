@@ -112,5 +112,11 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'vim-scripts/rdark'
 
-[[plugins]]
-repo = 'badwolf'
+#[[plugins]]
+#repo = 'slj/badwolf'
+
+#======================================
+#Python
+
+#[[plugins]]
+#repo = '
