@@ -8,11 +8,11 @@ set softtabstop=4
 set smartindent
 set expandtab
 set smartindent "オートインデントi
-set laststatus=4
+set laststatus=2
 set list "空白文字の可視化
 set t_Co=256
 syntax on "ハイライトの有効
-colorscheme	molokai 
+colorscheme	molokai
 
 "検索の設定
 set ignorecase "大文字/小文字の区別なく検索する
@@ -33,4 +33,17 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+"分割方向の指定
+set splitbelow
+set splitright
+
+
+
+
+
+
+
+
+
 

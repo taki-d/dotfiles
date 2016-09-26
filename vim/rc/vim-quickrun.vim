@@ -13,5 +13,7 @@ let g:quickrun_config._ = {
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
 
+let g:quickrun_config={'*': {'split': 'vertical'}}
+
 
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
