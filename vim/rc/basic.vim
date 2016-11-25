@@ -25,14 +25,14 @@ set clipboard=unnamed
 
 "vim上達用
 "矢印キーを無効にする
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+#noremap <Up> <Nop>
+#noremap <Down> <Nop>
+#noremap <Left> <Nop>
+#noremap <Right> <Nop>
+#inoremap <Up> <Nop>
+#inoremap <Down> <Nop>
+#inoremap <Left> <Nop>
+#inoremap <Right> <Nop>
 
 "分割方向の指定
 set splitbelow
