@@ -88,6 +88,12 @@ on_ft = 'css'
 repo = 'jelera/vim-javascript-syntax'
 on_ft = 'js'
 
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+
+[[plugins]]
+repo = 'justmao945/vim-clang'
+
 #====================================
 #colorscheme
 
