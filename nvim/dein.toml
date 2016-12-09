@@ -81,3 +81,6 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'vim-scripts/rdark'
 
+[[plugins]]
+repo = 'tyru/caw.vim'
+
