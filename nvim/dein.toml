@@ -35,6 +35,9 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'octol/vim-cpp-enhanced-highlight'
 
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -51,6 +54,13 @@ on_ft = 'css'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
 on_ft = 'js'
+
+[[plugins]]
+repo = 'taru-m/Dockerfile.vim'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
 
 #colorscheme
 
