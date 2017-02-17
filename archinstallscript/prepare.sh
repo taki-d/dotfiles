@@ -24,7 +24,7 @@ function prepare(){
     sed -e "1i Server = http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch" /etc/pacman.d/mirrorlist > /etc/pacman.d/mirrorlist
     sed -e "2i Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch" /etc/pacman.d/mirrorlist > /etc/pacman.d/mirrorlist
     
-    pacstrap -i /mnt base base-devel
+    pacstrap -i /mnt base base-devel git
     genfstab -U /mnt >> /mnt/etc/fstab
 
 }
