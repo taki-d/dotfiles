@@ -14,7 +14,7 @@ echo KEYMAP=jp106 > /etc/vconsole.conf
 echo RabbitHouse > /etc/hostname
 
 systemctl enable dhcpcd.service
-
+pacman -S vim
 passwd
 
 useradd -m -g wheel -s /bin/zsh taki
@@ -24,7 +24,7 @@ visudo
 
 echo "[archlinuxfr]" >> /etc/pacman.conf
 echo "SigLevel = Never" >> /etc/pacman.conf
-echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
 pacman --sync --refresh yaourt
 
