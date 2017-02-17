@@ -21,9 +21,12 @@ function prepare(){
 
     timedatectl set-ntp true
 
-    sed -e "1i Server = http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch" /etc/pacman.d/mirrorlist
-    sed -e "2i Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch" /etc/pacman.d/mirrorlist
+    sed -e "1i Server = http://ftp.tsukuba.wide.ad.jp/Linux/archlinux/$repo/os/$arch" /etc/pacman.d/mirrorlist > /etc/pacman.d/mirrorlist
+    sed -e "2i Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch" /etc/pacman.d/mirrorlist > /etc/pacman.d/mirrorlist
     
+    pacstrap -i /mnt base base-devel
+    genfstab -U /mnt >> /mnt/etc/fstab
+
 }
 
 status="0"
@@ -42,6 +45,8 @@ if [ "${status}" = "0" ];
 then
     prepare
 fi
+
+echo "Prepare Finish"
 
 
 
