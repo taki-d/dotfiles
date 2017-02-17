@@ -2,7 +2,7 @@
 
 function connect_to_network(){
 
-    wifi-menu
+    #wifi-menu
 
     ping goo.gl -c 1 >> /dev/null
 
