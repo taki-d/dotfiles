@@ -20,6 +20,26 @@ passwd
 useradd -m -g wheel -s /bin/zsh taki
 passwd taki
 
-pacman -S xorg-server xorg-apps xorg-server-utils xorg-xinit xorg-xmodmap firefox sudo qtcreator boost opencv vim xfce4-goodies xfce4 lightdm-gtk-greeter flashplugin otf-ipafont fcitx-im fcitx-configtool fcitx-mozc evince banshee jdk7-openjdk eclipse xdg-user-dirs-gtk grub os-prober dosfstools arch-install-scripts xf86-input-synaptics xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-nouveau mesa iw wpa_supplicant dialog chromium rxvt-unicode zsh tmux i3 thunderbird libcddb vlc dmenu clang gcc cinnamon openssh git openssl libreoffice libreoffice-ja blueman powertop  tree shutter geany alsa-utils tig  source-highlight unzip htop dstat iotop texlive-most texlive-lang  networkmanager screenfetch
+visudo
+
+echo "[archlinuxfr]" >> /etc/pacman.conf
+echo "SigLevel = Never" >> /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/$arch" >> /etc/pacman.conf
+
+pacman --sync --refresh yaourt
+
+pacman -Syu
+
+pacman -S xorg-server xorg-apps xorg-server-utils xorg-xinit xorg-xmodmap  xorg-xclock xterm firefox sudo qtcreator boost opencv vim xfce4-goodies xfce4 lightdm lightdm-gtk-greeter flashplugin otf-ipafont fcitx-im fcitx-configtool fcitx-mozc xdg-user-dirs-gtk grub os-prober dosfstools xf86-input-synaptics xf86-video-intel  mesa iw wpa_supplicant dialog rxvt-unicode zsh tmux i3 vlc dmenu clang gcc openssh git openssl libreoffice libreoffice-ja blueman powertop  tree  alsa-utils tig  source-highlight unzip htop dstat iotop texlive-most texlive-lang networkmanager screenfetch
+
+systemctl enable lightdm.service
+
+echo 'Section "InputClass"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
+echo 'Identifier "Keyboard Defaults"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
+echo 'MatchIsKeyboard "yes"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
+echo 'Option "XkbLayout" "jp"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
+echo 'EndSection'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
+
+
 
 
