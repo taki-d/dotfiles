@@ -1,32 +1,10 @@
 "=============================================================================
 " FILE: init.vim
-" AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" License: MIT license  {{{
-"     Permission is hereby granted, free of charge, to any person obtaining
-"     a copy of this software and associated documentation files (the
-"     "Software"), to deal in the Software without restriction, including
-"     without limitation the rights to use, copy, modify, merge, publish,
-"     distribute, sublicense, and/or sell copies of the Software, and to
-"     permit persons to whom the Software is furnished to do so, subject to
-"     the following conditions:
-"
-"     The above copyright notice and this permission notice shall be included
-"     in all copies or substantial portions of the Software.
-"
-"     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-"     OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-"     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-"     IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-"     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-"     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-"     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-" }}}
+" AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
+" License: MIT license
 "=============================================================================
 
-let s:save_cpo = &cpo
-set cpo&vim
-
-" Global options definition. "{{{
+" Global options definition.
 let g:vimfiler_directory_display_top =
       \ get(g:, 'vimfiler_directory_display_top', 1)
 let g:vimfiler_max_directories_history =
@@ -91,17 +69,17 @@ if !has_key(g:vimfiler_extensions, 'multimedia')
         \ 'rmvb,rpm,smi,mkv,mid,wav,mp3,ogg,wma,au,flac'
         \ )
 endif
-"}}}
+
 
 let s:manager = vimfiler#util#get_vital_buffer()
 
 let s:loaded_columns = {}
 let s:loaded_filters = {}
 
-function! vimfiler#init#_initialize() abort "{{{
+function! vimfiler#init#_initialize() abort
   " Dummy initialize
-endfunction"}}}
-function! vimfiler#init#_command(default, args) abort "{{{
+endfunction
+function! vimfiler#init#_command(default, args) abort
   let args = []
   let options = a:default
   for arg in split(a:args, '\%(\\\@<!\s\)\+')
@@ -124,8 +102,8 @@ function! vimfiler#init#_command(default, args) abort "{{{
   endfor
 
   call vimfiler#init#_start(join(args), options)
-endfunction"}}}
-function! vimfiler#init#_context(context) abort "{{{
+endfunction
+function! vimfiler#init#_context(context) abort
   let default_context = extend(copy(vimfiler#variables#default_context()),
         \ vimfiler#custom#get_profile('default', 'context'))
 
@@ -172,8 +150,8 @@ function! vimfiler#init#_context(context) abort "{{{
   endif
 
   return context
-endfunction"}}}
-function! vimfiler#init#_vimfiler_directory(directory, context) "{{{1
+endfunction
+function! vimfiler#init#_vimfiler_directory(directory, context)
   " Set current unite.
   let b:vimfiler.unite = unite#get_current_unite()
 
@@ -220,6 +198,14 @@ function! vimfiler#init#_vimfiler_directory(directory, context) "{{{1
 
   set filetype=vimfiler
 
+  if a:context.split && has('vim_starting') && isdirectory(bufname('%'))
+    execute a:context.direction
+          \ (a:context.horizontal ? 'split' : 'vsplit')
+
+    enew
+    wincmd p
+  endif
+
   if b:vimfiler.context.double
     " Create another vimfiler.
     call vimfiler#mappings#create_another_vimfiler()
@@ -240,8 +226,8 @@ function! vimfiler#init#_vimfiler_directory(directory, context) "{{{1
   endif
 
   call vimfiler#mappings#cd(b:vimfiler.current_dir)
-endfunction"}}}
-function! vimfiler#init#_vimfiler_file(path, lines, dict) "{{{1
+endfunction
+function! vimfiler#init#_vimfiler_file(path, lines, dict)
   " Set current unite.
   let b:vimfiler.unite = unite#get_current_unite()
 
@@ -269,8 +255,8 @@ function! vimfiler#init#_vimfiler_file(path, lines, dict) "{{{1
   let &fileencoding = get(a:dict, 'vimfiler__encoding', '')
 
   setlocal nomodified
-endfunction"}}}
-function! vimfiler#init#_candidates(candidates, source_name) abort "{{{
+endfunction
+function! vimfiler#init#_candidates(candidates, source_name) abort
   let default = {
         \ 'vimfiler__is_directory' : 0,
         \ 'vimfiler__is_executable' : 0,
@@ -306,8 +292,8 @@ function! vimfiler#init#_candidates(candidates, source_name) abort "{{{
   endfor
 
   return a:candidates
-endfunction"}}}
-function! vimfiler#init#_columns(columns, context) abort "{{{
+endfunction
+function! vimfiler#init#_columns(columns, context) abort
   let columns = []
 
   for column in a:columns
@@ -332,8 +318,8 @@ function! vimfiler#init#_columns(columns, context) abort "{{{
   endfor
 
   return columns
-endfunction"}}}
-function! vimfiler#init#_filters(filters, context) abort "{{{
+endfunction
+function! vimfiler#init#_filters(filters, context) abort
   let filters = []
 
   for column in a:filters
@@ -358,9 +344,9 @@ function! vimfiler#init#_filters(filters, context) abort "{{{
   endfor
 
   return filters
-endfunction"}}}
+endfunction
 
-function! vimfiler#init#_start(path, ...) abort "{{{
+function! vimfiler#init#_start(path, ...) abort
   if vimfiler#util#is_cmdwin()
     call vimfiler#util#print_error(
           \ 'Command line buffer is detected!')
@@ -369,7 +355,7 @@ function! vimfiler#init#_start(path, ...) abort "{{{
     return
   endif
 
-  " Detect autochdir option. "{{{
+  " Detect autochdir option.
   if exists('+autochdir') && &autochdir
     call vimfiler#util#print_error(
           \ 'Detected autochdir!')
@@ -377,7 +363,7 @@ function! vimfiler#init#_start(path, ...) abort "{{{
           \ 'vimfiler don''t work if you set autochdir option.')
     return
   endif
-  "}}}
+  
 
   let path = a:path
   if vimfiler#util#is_win_path(path)
@@ -422,8 +408,7 @@ function! vimfiler#init#_start(path, ...) abort "{{{
         let vimfiler = getbufvar(bufnr, 'vimfiler')
         if type(vimfiler) == type({})
               \ && vimfiler.context.buffer_name ==# context.buffer_name
-              \ && (!exists('t:tabpagebuffer')
-              \      || has_key(t:tabpagebuffer, bufnr))
+              \ && (exists('t:vimfiler') && has_key(t:vimfiler, bufnr))
               \ && (!context.invisible || bufwinnr(bufnr) < 0)
           call vimfiler#init#_switch_vimfiler(bufnr, context, path)
           return
@@ -435,8 +420,8 @@ function! vimfiler#init#_start(path, ...) abort "{{{
   endif
 
   call s:create_vimfiler_buffer(path, context)
-endfunction"}}}
-function! vimfiler#init#_switch_vimfiler(bufnr, context, directory) abort "{{{
+endfunction
+function! vimfiler#init#_switch_vimfiler(bufnr, context, directory) abort
   if a:bufnr < 0
     call s:create_vimfiler_buffer(a:directory, a:context)
     return
@@ -512,8 +497,8 @@ function! vimfiler#init#_switch_vimfiler(bufnr, context, directory) abort "{{{
       keepjumps call winrestview(a:context.prev_winsaveview)
     endif
   endif
-endfunction"}}}
-function! s:create_vimfiler_buffer(path, context) abort "{{{
+endfunction
+function! s:create_vimfiler_buffer(path, context) abort
   let search_path = fnamemodify(bufname('%'), ':p')
   let path = a:path
   if path == ''
@@ -556,6 +541,12 @@ function! s:create_vimfiler_buffer(path, context) abort "{{{
   " Save swapfile option.
   let swapfile_save = &swapfile
 
+  if !exists('t:vimfiler')
+    let t:vimfiler = {}
+  endif
+  " Save alternate buffer.
+  let t:vimfiler[bufnr('%')] = 1
+
   try
     set noswapfile
     let loaded = s:manager.open(bufname, 'silent edit')
@@ -563,8 +554,10 @@ function! s:create_vimfiler_buffer(path, context) abort "{{{
     let &g:swapfile = swapfile_save
   endtry
 
+  let t:vimfiler[bufnr('%')] = 1
+
   if !loaded
-    call vimshell#echo_error(
+    call vimfiler#echo_error(
           \ '[vimfiler] Failed to open Buffer "'. bufname .'".')
     return
   endif
@@ -590,16 +583,16 @@ function! s:create_vimfiler_buffer(path, context) abort "{{{
             \ bufwinnr(a:context.alternate_buffer))
     endif
   endif
-endfunction"}}}
+endfunction
 
-function! vimfiler#init#_default_settings() abort "{{{
+function! vimfiler#init#_default_settings() abort
   call s:buffer_default_settings()
 
   " Set autocommands.
-  augroup vimfiler "{{{
-    autocmd BufEnter,WinEnter,BufWinEnter <buffer>
+  augroup vimfiler
+    autocmd BufEnter,WinEnter <buffer>
           \ call vimfiler#handler#_event_bufwin_enter(expand('<abuf>'))
-    autocmd BufLeave,WinLeave,BufWinLeave <buffer>
+    autocmd BufLeave,WinLeave <buffer>
           \ call vimfiler#handler#_event_bufwin_leave(expand('<abuf>'))
     autocmd CursorMoved <buffer>
           \ call vimfiler#handler#_event_cursor_moved()
@@ -607,10 +600,10 @@ function! vimfiler#init#_default_settings() abort "{{{
           \ call vimfiler#view#_force_redraw_all_vimfiler()
     autocmd WinEnter,VimResized,CursorHold <buffer>
           \ call vimfiler#view#_redraw_all_vimfiler()
-  augroup end"}}}
-endfunction"}}}
+  augroup end
+endfunction
 
-function! s:buffer_default_settings() abort "{{{
+function! s:buffer_default_settings() abort
   setlocal buftype=nofile
   setlocal noswapfile
   setlocal noreadonly
@@ -643,9 +636,9 @@ function! s:buffer_default_settings() abort "{{{
         \ && &l:statusline !=# b:vimfiler.statusline
     let &l:statusline = b:vimfiler.statusline
   endif
-endfunction"}}}
+endfunction
 
-function! vimfiler#init#_get_postfix(prefix, is_create) abort "{{{
+function! vimfiler#init#_get_postfix(prefix, is_create) abort
   let buffers = get(a:000, 0, range(1, bufnr('$')))
   let buflist = vimfiler#util#sort_by(filter(map(buffers,
         \ 'bufname(v:val)'), 'stridx(v:val, a:prefix) >= 0'),
@@ -657,8 +650,8 @@ function! vimfiler#init#_get_postfix(prefix, is_create) abort "{{{
   let num = matchstr(buflist[-1], '@\zs\d\+$')
   return num == '' && !a:is_create ? '' :
         \ '@' . (a:is_create ? (num + 1) : num)
-endfunction"}}}
-function! vimfiler#init#_get_filetype(file) abort "{{{
+endfunction
+function! vimfiler#init#_get_filetype(file) abort
   let ext = tolower(a:file.vimfiler__extension)
 
   if (vimfiler#util#is_windows() && ext ==? 'LNK')
@@ -691,8 +684,8 @@ function! vimfiler#init#_get_filetype(file) abort "{{{
     " Others filetype.
     return '   '
   endif
-endfunction"}}}
-function! vimfiler#init#_get_datemark(file) abort "{{{
+endfunction
+function! vimfiler#init#_get_datemark(file) abort
   let time = localtime() - a:file.vimfiler__filetime
   if time < 86400
     " 60 * 60 * 24
@@ -703,9 +696,4 @@ function! vimfiler#init#_get_datemark(file) abort "{{{
   else
     return '~'
   endif
-endfunction"}}}
-
-let &cpo = s:save_cpo
-unlet s:save_cpo
-
-" vim: foldmethod=marker
+endfunction

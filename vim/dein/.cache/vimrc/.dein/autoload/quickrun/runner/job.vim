@@ -5,6 +5,7 @@
 let s:is_win = g:quickrun#V.Prelude.is_windows()
 let s:runner = {
 \   'config': {
+\     'pty': 0,
 \     'interval': 0,
 \   }
 \ }
@@ -23,13 +24,17 @@ endfunction
 
 function! s:runner.run(commands, input, session) abort
   let command = join(a:commands, ' && ')
-  let cmd_arg = s:is_win ? ['cmd.exe', '/c', command]
+  let cmd_arg = s:is_win ? printf('cmd.exe /c (%s)', command)
   \                      : ['sh', '-c', command]
   let options = {
   \   'mode': 'raw',
   \   'callback': self._job_cb,
+  \   'close_cb': self._job_close_cb,
   \   'exit_cb': self._job_exit_cb,
   \ }
+  if has('patch-8.0.0744')
+    let options.pty = self.config.pty
+  endif
   if a:input ==# ''
     let options.in_io = 'null'
   endif
@@ -63,8 +68,20 @@ function! s:runner._job_cb(channel, message) abort
   call quickrun#session(self._key, 'output', a:message)
 endfunction
 
+function! s:runner._job_close_cb(channel) abort
+  if has_key(self, '_job_exited')
+    call quickrun#session(self._key, 'finish', self._job_exited)
+  else
+    let self._job_exited = 0
+  endif
+endfunction
+
 function! s:runner._job_exit_cb(job, exit_status) abort
-  call quickrun#session(self._key, 'finish', a:exit_status)
+  if has_key(self, '_job_exited')
+    call quickrun#session(self._key, 'finish', a:exit_status)
+  else
+    let self._job_exited = a:exit_status
+  endif
 endfunction
 
 function! s:runner._timer_cb(timer) abort

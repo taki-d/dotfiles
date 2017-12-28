@@ -1,5 +1,5 @@
 quickrun
-20bcbd2d098f040b30fed86927921271d3503d76
+748bcc2ce8f953500e90a6117ea1825ff7cca6eb
 
 Data.List
 System.File
@@ -9,3 +9,4 @@ Process
 Vim.Message
 ConcurrentProcess
 Vim.ViewTracer
+Vim.Buffer

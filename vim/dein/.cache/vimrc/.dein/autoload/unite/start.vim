@@ -338,7 +338,6 @@ function! unite#start#resume(buffer_name, ...) abort "{{{
   if !context.unite__direct_switch
     let unite.win_rest_cmd = win_rest_cmd
   endif
-  let unite.redrawtime_save = &redrawtime
   let unite.access_time = localtime()
   let unite.context = context
   let unite.is_finalized = 0
@@ -437,7 +436,8 @@ function! unite#start#_pos(buffer_name, direction, count) abort "{{{
 
   " Immediately action.
   silent call unite#action#do_candidates(
-        \ unite.context.default_action, [candidate], unite.context)
+        \ unite.context.default_action, [candidate],
+        \ unite.context, unite.sources)
 
   let unite.candidate_cursor = next
 

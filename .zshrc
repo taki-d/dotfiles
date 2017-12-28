@@ -1,5 +1,7 @@
 # Created by newuser for 5.2
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 autoload -U compinit promptinit
 compinit
 promptinit

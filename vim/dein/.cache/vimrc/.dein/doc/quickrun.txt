@@ -186,7 +186,6 @@ KEY MAPPINGS					*quickrun-key-mappings*
 			Execute and display the result for current buffer.
 			This is normally same as |:QuickRun|
 			without arguments.
-<
 
 					*g:quickrun_no_default_key_mappings*
 Following key mappings will NOT be defined if it's already mapped,
@@ -501,12 +500,24 @@ default.  NOTE: Everything except for "system" can be unstable.
   {Requirement: |+job|}
   Runs via |job| feature.
   Option ~
+  runner/job/pty		Default: 0
+	Specifies a value of pty to pass to |job_start()|.
   runner/job/interval		Default: 0
 	Before Vim 8.0.0036, job feature checks about every 10 seconds for
 	jobs that ended (|job-exit_cb|).
 	When this value is not 0, this checks the end of job every specified
 	time in milliseconds by |timer|.
 	This option may be unnecessary when you use Vim 8.0.0036 or later.
+
+- "runner/terminal"			*quickrun-module-runner/terminal*
+  {Experimental}
+  {Requirement: |+terminal|}
+  Runs commands in terminal window via |terminal| feature.
+  Option ~
+  runner/terminal/opener	Default: "new"
+  An Ex command to open a terminal window.
+  runner/terminal/into		Default: 0
+  Moves cursor to the terminal window if this isn't 0.
 
 - "runner/vimscript"			*quickrun-module-runner/vimscript*
   Runs commands as Vim commands.
@@ -531,7 +542,7 @@ available by default.
   outputter/buffer/append		Default: 0
 	Appends if it's 1.
   outputter/buffer/split
-	Default: '{winwidth(0) * 2 < winheight(0) * 5 ? "" : "vertical"}'
+	Default: '%{winwidth(0) * 2 < winheight(0) * 5 ? "" : "vertical"}'
 
 	Specifies a sub-command to open a buffer for the output.  |quickrun|
 	inserts this before |:split| command when it opens a buffer.

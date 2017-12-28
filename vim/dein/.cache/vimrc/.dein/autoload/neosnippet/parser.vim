@@ -1,34 +1,12 @@
 "=============================================================================
 " FILE: parser.vim
-" AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" License: MIT license  {{{
-"     Permission is hereby granted, free of charge, to any person obtaining
-"     a copy of this software and associated documentation files (the
-"     "Software"), to deal in the Software without restriction, including
-"     without limitation the rights to use, copy, modify, merge, publish,
-"     distribute, sublicense, and/or sell copies of the Software, and to
-"     permit persons to whom the Software is furnished to do so, subject to
-"     the following conditions:
-"
-"     The above copyright notice and this permission notice shall be included
-"     in all copies or substantial portions of the Software.
-"
-"     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-"     OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-"     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-"     IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-"     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-"     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-"     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-" }}}
+" AUTHOR:  Shougo Matsushita <Shougo.Matsu at gmail.com>
+" License: MIT license
 "=============================================================================
-
-let s:save_cpo = &cpo
-set cpo&vim
 
 let s:Cache = neosnippet#util#get_vital().import('System.Cache.Deprecated')
 
-function! neosnippet#parser#_parse_snippets(filename) abort "{{{
+function! neosnippet#parser#_parse_snippets(filename) abort
   if !filereadable(a:filename)
     call neosnippet#util#print_error(
           \ printf('snippet file "%s" is not found.', a:filename))
@@ -54,8 +32,8 @@ function! neosnippet#parser#_parse_snippets(filename) abort "{{{
   endif
 
   return snippets
-endfunction"}}}
-function! neosnippet#parser#_parse_snippet(filename, trigger) abort "{{{
+endfunction
+function! neosnippet#parser#_parse_snippet(filename, trigger) abort
   if !filereadable(a:filename)
     call neosnippet#util#print_error(
           \ printf('snippet file "%s" is not found.', a:filename))
@@ -70,9 +48,9 @@ function! neosnippet#parser#_parse_snippet(filename, trigger) abort "{{{
 
   return neosnippet#parser#_initialize_snippet(
         \ snippet_dict, a:filename, 1, '', a:trigger)
-endfunction"}}}
+endfunction
 
-function! s:parse(snippets_file) abort "{{{
+function! s:parse(snippets_file) abort
   let dup_check = {}
   let snippet_dict = {}
   let linenr = 1
@@ -89,11 +67,14 @@ function! s:parse(snippets_file) abort "{{{
       " Ignore.
     elseif line =~ '^include'
       " Include snippets file.
-      for file in split(globpath(join(
-            \ neosnippet#helpers#get_snippets_directory(), ','),
-            \ matchstr(line, '^include\s\+\zs.*$')), '\n')
-        let snippets = extend(snippets,
-              \ neosnippet#parser#_parse_snippets(file))
+      let snippets = extend(snippets, s:include_snippets(
+            \ [matchstr(line, '^include\s\+\zs.*$')]))
+    elseif line =~ '^extends'
+      " Extend snippets files.
+      let fts = split(matchstr(line, '^extends\s\+\zs.*$'), '\s*,\s*')
+      for ft in fts
+        let snippets = extend(snippets, s:include_snippets(
+              \ [ft.'.snip', ft.'.snippets', ft.'/*']))
       endfor
     elseif line =~ '^source'
       " Source Vim script file.
@@ -142,9 +123,9 @@ function! s:parse(snippets_file) abort "{{{
   endif
 
   return [snippets, sourced]
-endfunction"}}}
+endfunction
 
-function! s:parse_snippet_name(snippets_file, line, linenr, dup_check) abort "{{{
+function! s:parse_snippet_name(snippets_file, line, linenr, dup_check) abort
   " Initialize snippet dict.
   let snippet_dict = {
         \ 'word' : '',
@@ -184,9 +165,9 @@ function! s:parse_snippet_name(snippets_file, line, linenr, dup_check) abort "{{
   endif
 
   return snippet_dict
-endfunction"}}}
+endfunction
 
-function! s:add_snippet_attribute(snippets_file, line, linenr, snippet_dict) abort "{{{
+function! s:add_snippet_attribute(snippets_file, line, linenr, snippet_dict) abort
   " Allow overriding/setting of the description (abbr) of the snippet.
   " This will override what was set via the snippet line.
   if a:line =~ '^abbr\s'
@@ -225,9 +206,9 @@ function! s:add_snippet_attribute(snippets_file, line, linenr, snippet_dict) abo
     call neosnippet#util#print_error(
           \ printf('Invalid syntax : "%s"', a:line))
   endif
-endfunction"}}}
+endfunction
 
-function! s:set_snippet_dict(snippet_dict, snippets, dup_check, snippets_file) abort "{{{
+function! s:set_snippet_dict(snippet_dict, snippets, dup_check, snippets_file) abort
   if empty(a:snippet_dict)
     return
   endif
@@ -247,9 +228,9 @@ function! s:set_snippet_dict(snippet_dict, snippets, dup_check, snippets_file) a
     let a:snippets[alias] = alias_snippet
     let a:dup_check[alias] = alias_snippet
   endfor
-endfunction"}}}
+endfunction
 
-function! neosnippet#parser#_initialize_snippet(dict, path, line, pattern, name) abort "{{{
+function! neosnippet#parser#_initialize_snippet(dict, path, line, pattern, name) abort
   let a:dict.word = substitute(a:dict.word, '\n\+$', '', '')
   if a:dict.word !~ '\n'
         \ && a:dict.word !~
@@ -266,6 +247,7 @@ function! neosnippet#parser#_initialize_snippet(dict, path, line, pattern, name)
         \   neosnippet#get_placeholder_marker_pattern(). '\|'.
         \   neosnippet#get_mirror_placeholder_marker_pattern().
         \   '\|\s\+\|\n\|TARGET', ' ', 'g')
+    let abbr = substitute(abbr, '\\\(\\\|`\|\$\)', '\1', 'g')
     let a:dict.abbr = a:dict.name
   else
     let abbr = a:dict.abbr
@@ -286,9 +268,9 @@ function! neosnippet#parser#_initialize_snippet(dict, path, line, pattern, name)
   endif
 
   return snippet
-endfunction"}}}
+endfunction
 
-function! neosnippet#parser#_initialize_snippet_options() abort "{{{
+function! neosnippet#parser#_initialize_snippet_options() abort
   return {
         \ 'head' : 0,
         \ 'word' :
@@ -296,9 +278,9 @@ function! neosnippet#parser#_initialize_snippet_options() abort "{{{
         \ 'indent' : 0,
         \ 'oneshot' : 0,
         \ }
-endfunction"}}}
+endfunction
 
-function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, next_text) abort "{{{
+function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, next_text) abort
   let item = a:completed_item
 
   if strridx(a:cur_text, item.word) != len(a:cur_text) - len(item.word)
@@ -318,6 +300,7 @@ function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, nex
   if item.info != ''
     let abbr .= split(item.info, '\n')[0]
   endif
+  let abbr = escape(abbr, '\')
   let pairs = neosnippet#util#get_buffer_config(
       \ &filetype, '',
       \ 'g:neosnippet#completed_pairs', 'g:neosnippet#_completed_pairs', {})
@@ -359,12 +342,7 @@ function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, nex
     for arg in split(substitute(
           \ neosnippet#parser#_get_in_paren('<', '>', abbr),
           \ '<\zs.\{-}\ze>', '', 'g'), '[^[]\zs\s*,\s*')
-      if args != '' && arg !=# '...'
-        let args .= ', '
-      endif
-      let args .= printf('${%d:#:%s%s}',
-            \ cnt, ((args != '' && arg ==# '...') ? ', ' : ''),
-            \ escape(arg, '{}'))
+      let args .= neosnippet#parser#_conceal_argument(arg, cnt, args)
       let cnt += 1
     endfor
     let snippet .= args
@@ -380,17 +358,14 @@ function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, nex
         \ neosnippet#parser#_get_in_paren(key, pair, abbr),
         \ key.'\zs.\{-}\ze'.pair . '\|<\zs.\{-}\ze>', '', 'g'),
         \ '[^[]\zs\s*,\s*')
-    if key ==# '(' && arg ==# 'self' && &filetype ==# 'python'
+    if key ==# '(' && (
+          \ (&filetype ==# 'python' && arg ==# 'self') ||
+          \ (&filetype ==# 'rust' && arg =~# '\m^&\?\(mut \)\?self$'))
       " Ignore self argument
       continue
     endif
 
-    if args != '' && arg !=# '...'
-      let args .= ', '
-    endif
-    let args .= printf('${%d:#:%s%s}',
-          \ cnt, ((args != '' && arg ==# '...') ? ', ' : ''),
-          \ escape(arg, '{}'))
+    let args .= neosnippet#parser#_conceal_argument(arg, cnt, args)
     let cnt += 1
   endfor
   let snippet .= args
@@ -404,9 +379,9 @@ function! neosnippet#parser#_get_completed_snippet(completed_item, cur_text, nex
   let snippet .= '${' . cnt . '}'
 
   return snippet
-endfunction"}}}
+endfunction
 
-function! neosnippet#parser#_get_in_paren(key, pair, str) abort "{{{
+function! neosnippet#parser#_get_in_paren(key, pair, str) abort
   let s = ''
   let level = 0
   for c in split(a:str, '\zs')
@@ -417,7 +392,7 @@ function! neosnippet#parser#_get_in_paren(key, pair, str) abort "{{{
         continue
       endif
     elseif c ==# a:pair
-      if level == 1 && s != ''
+      if level == 1 && (s != '' || a:str =~ '()\s*(.\{-})')
         return s
       else
         let level -= 1
@@ -430,10 +405,29 @@ function! neosnippet#parser#_get_in_paren(key, pair, str) abort "{{{
   endfor
 
   return ''
-endfunction"}}}
+endfunction
 
+function! neosnippet#parser#_conceal_argument(arg, cnt, args) abort
+  let outside = ''
+  let inside = ''
+  if (a:args != '')
+    if g:neosnippet#enable_optional_arguments
+      let inside = ', '
+    else
+      let outside = ', '
+    endif
+  endif
+  return printf('%s${%d:#:%s%s}', outside, a:cnt, inside, escape(a:arg, '{}'))
+endfunction
 
-let &cpo = s:save_cpo
-unlet s:save_cpo
+function! s:include_snippets(globs) abort
+  let snippets = {}
+  for glob in a:globs
+      for file in split(globpath(join(
+            \ neosnippet#helpers#get_snippets_directory(), ','), glob), '\n')
+        call extend(snippets, neosnippet#parser#_parse_snippets(file))
+      endfor
+  endfor
 
-" vim: foldmethod=marker
+  return snippets
+endfunction

@@ -468,6 +468,7 @@ function! unite#helper#get_choose_windows() abort "{{{
         \ !getwinvar(v:val, '&previewwindow')
         \ && getwinvar(v:val, '&filetype') !=# 'vimfiler'
         \ && getwinvar(v:val, '&filetype') !=# 'unite'
+        \ && getwinvar(v:val, '&buftype') !~# 'terminal'
         \ && (getwinvar(v:val, '&buftype') !~# 'nofile'
         \   || getwinvar(v:val, '&buftype') =~# 'acwrite')
         \ && getwinvar(v:val, '&filetype') !=# 'qf'")
@@ -601,11 +602,6 @@ function! unite#helper#ignore_candidates(candidates, context) abort "{{{
     let candidates = unite#filters#filter_patterns(candidates,
           \ unite#filters#globs2patterns(a:context.ignore_globs),
           \ unite#filters#globs2patterns(a:context.white_globs))
-  endif
-
-  if a:context.path != ''
-    let candidates = unite#filters#{unite#util#has_lua()? 'lua' : 'vim'}
-          \_filter_head(candidates, a:context.path)
   endif
 
   return candidates

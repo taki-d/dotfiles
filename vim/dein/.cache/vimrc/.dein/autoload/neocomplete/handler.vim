@@ -97,10 +97,6 @@ function! neocomplete#handler#_on_insert_char_pre() abort "{{{
     return
   endif
 
-  if neocomplete.old_char != ' ' && v:char == ' ' && v:count == 0
-    call s:make_cache_current_line()
-  endif
-
   let neocomplete.old_char = v:char
 endfunction"}}}
 function! neocomplete#handler#_on_text_changed() abort "{{{
@@ -316,7 +312,11 @@ endfunction"}}}
 function! s:complete_key(key) abort "{{{
   call neocomplete#helper#complete_configure()
 
-  call feedkeys(a:key)
+  if has('patch-7.4.601')
+    call feedkeys(a:key, 'i')
+  else
+    call feedkeys(a:key)
+  endif
 endfunction"}}}
 
 function! s:indent_current_line() abort "{{{
@@ -348,11 +348,9 @@ endfunction"}}}
 function! s:is_delimiter() abort "{{{
   " Check delimiter pattern.
   let is_delimiter = 0
-  let filetype = neocomplete#get_context_filetype()
   let cur_text = neocomplete#get_cur_text(1)
 
-  for delimiter in ['/', '.'] +
-        \ get(g:neocomplete#delimiter_patterns, filetype, [])
+  for delimiter in ['/']
     if stridx(cur_text, delimiter,
           \ len(cur_text) - len(delimiter)) >= 0
       let is_delimiter = 1
