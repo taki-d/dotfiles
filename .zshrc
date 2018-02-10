@@ -43,3 +43,11 @@ alias egrep='egrep --color=auto'
 function chpwd() { ls -v -F --color=auto }
 
 screenfetch
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+#alias ls=sl
+#alias cd=sl
+#alias mv=sl
+#alias vim=sl

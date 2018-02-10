@@ -12,7 +12,7 @@ set laststatus=2
 set list "空白文字の可視化
 set t_Co=256
 syntax on "ハイライトの有効
-colorscheme	molokai
+colorscheme molokai
 
 "検索の設定
 set ignorecase "大文字/小文字の区別なく検索する
@@ -37,13 +37,4 @@ set clipboard=unnamed
 "分割方向の指定
 set splitbelow
 set splitright
-
-source ./dein_config.vim
-
-" ./config/*.vimを読みに行く
-for config_file in split(glob('./config/*.vim', '\n'))
-    exe 'source ' config_file
-endfor
-
-
 
