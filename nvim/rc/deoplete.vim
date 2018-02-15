@@ -1,6 +1,3 @@
-
-colorscheme molokai
-
 " NeoSnippet Settings
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<C-n>" :

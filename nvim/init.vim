@@ -11,13 +11,11 @@ set smartindent "オートインデントi
 set laststatus=2
 set list "空白文字の可視化
 set t_Co=256
-syntax on "ハイライトの有効
 
 "検索の設定
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
 set wrapscan "検索時に最後まで行ったら最初に戻るi
-
 
 "クリップボードを同期
 set clipboard=unnamed
@@ -57,7 +55,7 @@ if dein#load_state(s:dein_dir)
 
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.vim/rc')
+  let g:rc_dir    = expand('~/.config/nvim/rc')
   let s:toml      = g:rc_dir . '/dein.toml'
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
@@ -75,9 +73,11 @@ if dein#check_install()
   call dein#install()
 endif
 
-" ./config/*.vimをsource市に行く
-runtime! config/*.vim
+colorscheme molokai
+syntax on "ハイライトの有効
 
-"colorscheme molokai
+" ./config/*.vimをsource市に行く
+runtime! rc/*.vim
+
 
 
