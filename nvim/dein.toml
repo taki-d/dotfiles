@@ -2,9 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-
-[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -23,6 +20,12 @@ repo = 'Shougo/deol.nvim'
 [[plugins]] #ステータスラインの表示強化
 repo = 'itchyny/lightline.vim'
 
+# deoplete completion
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
 
 # syntax
 [[plugins]]

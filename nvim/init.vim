@@ -76,10 +76,8 @@ if dein#check_install()
 endif
 
 " ./config/*.vimをsource市に行く
-for fpath in split(globpath('~/dotfiles/nvim/config/', '*.vim'), '\n')
-  exe 'source' fpath
-endfor
+runtime! config/*.vim
 
-colorscheme molokai
+"colorscheme molokai
 
 
