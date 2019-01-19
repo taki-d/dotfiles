@@ -51,3 +51,4 @@ alias n=nvim
 #alias cd=sl
 #alias mv=sl
 #alias vim=sl
+
