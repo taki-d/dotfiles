@@ -9,6 +9,7 @@ URxvt.background: [75]#000000
 ! japanese
 URxvt*preeditType: OnTheSpot
 URxvt*perl-ext: xim-onthespot
+URxvt*inputMethod: fcitx
 
 ! scrollbar
 URxvt*scrollBar: true
@@ -35,4 +36,5 @@ URxvt*color12: #729FCF
 URxvt*color13: #AD7FA8
 URxvt*color14: #34E2E2
 URxvt*color15: #EEEEEC
+
 
