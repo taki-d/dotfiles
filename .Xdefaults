@@ -1,0 +1,3 @@
+urxvt.perl-ext: xim-onthespot
+urxvt.inputMethod: fcitx
+urxvt.preeditType: OnTheSpot
