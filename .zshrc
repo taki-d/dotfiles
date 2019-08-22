@@ -42,7 +42,6 @@ alias egrep='egrep --color=auto'
 #cd後自動でls
 function chpwd() { ls -v -F --color=auto }
 
-screenfetch
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
