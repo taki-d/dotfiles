@@ -30,10 +30,9 @@ pacman --sync --refresh yaourt
 
 pacman -Syu
 
-pacman -S xorg-server xorg-apps xorg-xinit xorg-xmodmap  xorg-xclock xterm firefox sudo qtcreator boost opencv vim xfce4-goodies xfce4 lightdm lightdm-gtk-greeter flashplugin otf-ipafont fcitx-im fcitx-configtool fcitx-mozc xdg-user-dirs-gtk grub os-prober dosfstools xf86-input-synaptics xf86-video-intel  mesa iw wpa_supplicant dialog rxvt-unicode zsh tmux i3 vlc dmenu clang gcc openssh git openssl libreoffice libreoffice-ja blueman powertop  tree  alsa-utils tig  source-highlight unzip htop dstat iotop texlive-most texlive-lang networkmanager screenfetch
-
 systemctl enable lightdm.service
 
+# change keyboard us -> jp
 echo 'Section "InputClass"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
 echo 'Identifier "Keyboard Defaults"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
 echo 'MatchIsKeyboard "yes"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
