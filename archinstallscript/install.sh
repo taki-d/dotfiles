@@ -40,5 +40,8 @@ echo 'Option "XkbLayout" "jp"'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
 echo 'EndSection'  >> /etc/X11/xorg.conf.d/10-keyboard.conf
 
 
+# install zplugin
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+
 
 
