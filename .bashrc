@@ -10,3 +10,4 @@ PS1='[\u@\h \W]\$ '
 
 screenfetch
 
+export PATH="$HOME/.rbenv/bin:$PATH"

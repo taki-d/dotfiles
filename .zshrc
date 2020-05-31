@@ -18,6 +18,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias disp="xrandr --output DP1-1 --mode 1920x1200 --rotate right --right-of eDP1 && xrandr --output DP1-2 --mode 3840x2160 --right-of DP1-1"
+
 #cd後自動でls
 function chpwd() { ls -v -F --color=auto }
 
@@ -47,4 +49,14 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light b4b4r07/enhancd
 
 zinit light zsh-users/zsh-history-substring-search
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+
+
 

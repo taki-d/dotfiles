@@ -1,6 +1,6 @@
 ! font
 URxvt.allow_bold: false
-URxvt*font: xft:Ricty:size=13:antialias=ture
+URxvt*font: xft:monaco:size=11:antialias=ture
 
 ! tranparent
 URxvt.depth: 32
