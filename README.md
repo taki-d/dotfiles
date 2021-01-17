@@ -1,6 +1,6 @@
 # dotfiles
 
-##導入方法
+## 導入方法
 ```
 sh ./Script/dotfileslink.sh
 ```
