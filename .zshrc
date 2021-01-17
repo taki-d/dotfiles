@@ -20,6 +20,8 @@ alias egrep='egrep --color=auto'
 
 alias disp="xrandr --output DP1-1 --mode 1920x1200 --rotate right --right-of eDP1 && xrandr --output DP1-2 --mode 3840x2160 --right-of DP1-1"
 
+alias gnome-screenshot="gnome-screenshot -f $HOME/Screenshot/$(date +%Y-%m-%d-%H:%M:%S).png"
+
 #cd後自動でls
 function chpwd() { ls -v -F --color=auto }
 
