@@ -2,7 +2,7 @@
 
 ## 導入方法
 ```
-sh ./Script/dotfileslink.sh
+sh ./scripts/dotfilesLink.sh
 ```
 これで色々なファイルがリンクされます
 終わり。
