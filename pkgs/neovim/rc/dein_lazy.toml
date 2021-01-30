@@ -1,0 +1,4 @@
+[[plugins]]
+repo = 'lervag/vimtex'
+on_path = '*.tex'
+

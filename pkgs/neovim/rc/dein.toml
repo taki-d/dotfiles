@@ -1,0 +1,73 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugin]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+
+[[plugins]] #ステータスラインの表示強化
+repo = 'itchyny/lightline.vim'
+
+# deoplete completion
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+
+# syntax
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+on_ft = 'cpp'
+
+[[plugins]]
+repo = 'stephpy/vim-yaml'
+on_ft = 'yml'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+#colorscheme
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'vim-scripts/twilight'
+
+[[plugins]]
+repo = 'jonathanfilip/vim-lucius'
+
+[[plugins]]
+repo = 'jpo/vim-railscasts-theme'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'vim-scripts/Wombat'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'vim-scripts/rdark'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
