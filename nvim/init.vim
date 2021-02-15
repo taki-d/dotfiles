@@ -35,49 +35,35 @@ set clipboard=unnamed
 set splitbelow
 set splitright
 
-
-" deinvim settings
+let s:plugin = '~/.config/nvim/config/dein.toml'
 let s:dein_dir = expand('~/.cache/dein')
-" dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+if &compatible
+  set nocompatible
 endif
 
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.config/nvim/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  " 設定終了
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+  call dein#load_toml(s:plugin, {'lazy': 0})
   call dein#end()
   call dein#save_state()
 endif
 
-" もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
 
-colorscheme molokai
+colorscheme gruvbox
+
+filetype plugin indent on
 syntax on "ハイライトの有効
-
-" ./config/*.vimをsource市に行く
-runtime! rc/*.vim
-
 
 

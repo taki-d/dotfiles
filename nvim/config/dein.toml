@@ -1,0 +1,40 @@
+
+[[plugins]]
+repo = "Shougo/defx.nvim"
+depends = ["defx-git"]
+hook_add = """
+source ~/.config/nvim/config/defx.vim
+"""
+
+[[plugins]]
+repo = "Shougo/denite.nvim"
+hook_add = """
+source ~/.config/nvim/config/denite.vim
+"""
+
+[[plugins]]
+repo = "shougo/deol.nvim"
+hook_add = """
+source ~/.config/nvim/config/deol.vim
+"""
+
+[[plugins]]
+repo = "morhetz/gruvbox"
+
+[[plugins]]
+repo = "cespare/vim-toml"
+
+[[plugins]]
+repo = "Shougo/deoplete.nvim"
+hook_add = """
+source ~/.config/nvim/config/deoplete.vim
+"""
+
+[[plugins]]
+repo = "Shougo/deoplete-lsp"
+
+[[plugins]]
+repo = "ervandew/supertab"
+
+[[plugins]]
+repo = "Chiel92/vim-autoformat"
