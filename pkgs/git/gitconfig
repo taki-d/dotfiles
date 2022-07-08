@@ -1,0 +1,9 @@
+[user]
+    name = taki-d
+    email = mail@orangepla.net
+
+[color]
+    ui = true
+
+[core]
+    editor = vim
