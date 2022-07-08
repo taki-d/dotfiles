@@ -7,7 +7,6 @@ source $ZI_HOME_DIR/zi.zsh
 
 autoload -Uz _zi
 
-
 zi snippet 'OMZL::completion.zsh'
 
 
