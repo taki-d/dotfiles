@@ -25,5 +25,4 @@ ZSH_CONFIG_BASE_DIR=$HOME/dotfiles/pkgs/zsh
 for i in $( ls $ZSH_CONFIG_BASE_DIR/zsh.conf.d/* )
 do
   source $i
-#  echo $i
 done

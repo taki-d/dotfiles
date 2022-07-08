@@ -9,5 +9,6 @@ autoload -Uz _zi
 
 zi snippet 'OMZL::completion.zsh'
 
-
+zi light b4b4r07/enhancd
+zi light zsh-users/zsh-autosuggestions
 
