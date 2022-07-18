@@ -24,3 +24,9 @@ fi
 ln -sf ${DOTFILES_HOME}/pkgs/fish ~/.config/fish
 ln -sf ${DOTFILES_HOME}/pkgs/spack ~/.spack
 
+ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/settings.json
+
+cat ${DOTFILES_HOME}/pkgs/vscode/extensions | while read line
+do
+ code --install-extension $line
+done
