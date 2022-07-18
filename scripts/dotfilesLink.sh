@@ -18,4 +18,6 @@ if [[ "$(uname -r)" != *microsoft* ]]; then
     ln -sf ${DOTFILES_HOME}/pkgs/i3/memory.py ${XDG_CONFIG_HOME}/i3/memory.py
     ln -sf ${DOTFILES_HOME}/pkgs/i3/i3blocks-config ${XDG_CONFIG_HOME}/i3blocks/config
     ln -sf ${DOTFILES_HOME}/pkgs/font/fontconfig ${XDG_CONFIG_HOME}/fontconfig/fonts.conf
+    ln -sf ${DOTFILES_HOME}/pkgs/font/71-no-embeded-bitmaps.conf /etc/fonts/conf.d/71-no-embedded-bitmaps.conf
 fi
+

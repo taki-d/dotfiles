@@ -16,7 +16,7 @@ font:
   italic:  
     family: "Monaco"
     style: Italic
-  size: 12
+  size: 8
   
 background_opacity: 0.95 
 
