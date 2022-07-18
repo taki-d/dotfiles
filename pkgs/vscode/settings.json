@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "editor.accessibilityPageSize": 12,
+    "editor.fontFamily": "monaco",
+    "cmake.configureOnOpen": true,
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontSize": 17
+}
