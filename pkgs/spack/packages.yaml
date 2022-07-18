@@ -1,0 +1,40 @@
+packages:
+  autoconf:
+    externals:
+    - spec: autoconf@2.71
+      prefix: /usr
+    buildable: false
+  automake:
+    externals:
+    - spec: automake@1.16.3
+      prefix: /usr
+    buildable: false
+  libtool:
+    externals:
+    - spec: libtool@2.4.6
+      prefix: /usr
+    buildable: false
+  m4:
+    externals:
+    - spec: m4@1.4.18
+      prefix: /usr
+    buildable: false
+  zlib:
+    externals:
+    - spec: zlib@1.2.11
+      prefix: /usr
+    buildable: false
+  perl:
+    externals:
+    - spec: perl@8.44
+      prefix: /usr
+    buildable: false
+  mercury:
+    variants: ~boostsys+ofi+bmi
+  libfabric:
+    variants: fabrics=tcp,rxm
+    externals:
+    - spec: bzip@1.0.8
+      prefix: /usr
+    buildable: false
+
