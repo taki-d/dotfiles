@@ -17,7 +17,7 @@ font:
   italic:  
     family: "Monaco"
     style: Italic
-  size: 12
+  size: 14
   
 colors:
   primary:
