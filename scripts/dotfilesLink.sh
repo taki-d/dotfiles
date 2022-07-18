@@ -21,3 +21,6 @@ if [[ "$(uname -r)" != *microsoft* ]]; then
     ln -sf ${DOTFILES_HOME}/pkgs/font/71-no-embeded-bitmaps.conf /etc/fonts/conf.d/71-no-embedded-bitmaps.conf
 fi
 
+ln -sf ${DOTFILES_HOME}/pkgs/fish ~/.config/fish
+ln -sf ${DOTFILES_HOME}/pkgs/spack ~/.spack
+

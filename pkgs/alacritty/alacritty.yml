@@ -5,6 +5,7 @@ window:
   padding:
     x: 2
     y: 2
+  opacity: 0.95
   
 font:  
   normal:  
@@ -16,10 +17,8 @@ font:
   italic:  
     family: "Monaco"
     style: Italic
-  size: 14
+  size: 12
   
-background_opacity: 0.95 
-
 colors:
   primary:
     background: '#282828'

@@ -16,7 +16,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty
+bindsym $mod+Return exec WINIT_X11_SCALE_FACTOR=1 alacritty --command /bin/fish
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -163,7 +163,7 @@ set $white #c0c5ce
 
 bar {
         status_command i3blocks
-	font pango:Monaco 10
+	font pango:Monaco 12
         mode dock
    	position bottom
     	separator_symbol " │ "
