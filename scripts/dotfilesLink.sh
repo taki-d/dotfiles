@@ -19,7 +19,7 @@ if [[ "$(uname -r)" != *microsoft* ]]; then
     mkdir -p ${XDG_CONFIG_HOME}/i3blocks
 
     ln -sf ${DOTFILES_HOME}/pkgs/i3/i3-config ${XDG_CONFIG_HOME}/i3/config
-    ln -sf ${DOTFILES_HOME}/pkgs/i3/memory.py ${XDG_CONFIG_HOME}/i3/memory.py
+    ln -sf ${DOTFILES_HOME}/pkgs/i3/memory.py ${XDG_CONFIG_HOME}/i3blocks/memory.py
     ln -sf ${DOTFILES_HOME}/pkgs/i3/i3blocks-config ${XDG_CONFIG_HOME}/i3blocks/config
     
     mkdir -p ${XDG_CONFIG_HOME}/fontconfig/conf.d/
@@ -35,5 +35,7 @@ ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/s
 
 cat ${DOTFILES_HOME}/pkgs/vscode/extensions | while read line
 do
- code --install-extension $line
+ code --install-extension $line > /dev/null
 done
+
+echo "complete"
