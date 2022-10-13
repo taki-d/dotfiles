@@ -1,0 +1,3 @@
+[submodule "pkgs/ssh"]
+	path = pkgs/ssh
+	url = git@github.com:taki-d/ssh
