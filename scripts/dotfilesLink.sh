@@ -6,8 +6,9 @@ ln -sf ${DOTFILES_HOME}/pkgs/zsh/zshrc ~/.zshrc
 ln -sf ${DOTFILES_HOME}/pkgs/alacritty/alacritty.yml ~/.alacritty.yml
 ln -sf ${DOTFILES_HOME}/pkgs/git/gitconfig ~/.gitconfig
 
-# linux specific files
-if [[ "$(uname -r)" != *microsoft* ]]; then
+if [[ "$(uname -r)" == *microsoft* ]]; then
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux"]; then
+    echo "linux specific files"
     ln -sf ${DOTFILES_HOME}/pkgs/x/xprofile ~/.xprofile
     ln -sf ${DOTFILES_HOME}/pkgs/x/Xresources ~/.Xresources
     ln -sf ${DOTFILES_HOME}/pkgs/x/Xdefaults ~/.Xdefaults
@@ -28,14 +29,11 @@ if [[ "$(uname -r)" != *microsoft* ]]; then
     ln -sf ${DOTFILES_HOME}/pkgs/font/71-no-embeded-bitmaps.conf ${XDG_CONFIG_HOME}/fontconfig/conf.d/71-no-embedded-bitmaps.conf
 fi
 
-ln -sf ${DOTFILES_HOME}/pkgs/fish ~/.config/fish
-ln -sf ${DOTFILES_HOME}/pkgs/spack ~/.spack
+# ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/settings.json
 
-ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/settings.json
-
-cat ${DOTFILES_HOME}/pkgs/vscode/extensions | while read line
-do
- code --install-extension $line > /dev/null
-done
+# cat ${DOTFILES_HOME}/pkgs/vscode/extensions | while read line
+# do
+#  code --install-extension $line > /dev/null
+# done
 
 echo "complete"
