@@ -5,9 +5,11 @@ XDG_CONFIG_HOME=~/.config
 ln -sf ${DOTFILES_HOME}/pkgs/zsh/zshrc ~/.zshrc
 ln -sf ${DOTFILES_HOME}/pkgs/alacritty/alacritty.yml ~/.alacritty.yml
 ln -sf ${DOTFILES_HOME}/pkgs/git/gitconfig ~/.gitconfig
+ln -sf ${DOTFILES_HOME}/pkgs/ssh/config ~/.ssh/config
 
 if [[ "$(uname -r)" == *microsoft* ]]; then
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux"]; then
+    echo "WSL specific configs"
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     echo "linux specific files"
     ln -sf ${DOTFILES_HOME}/pkgs/x/xprofile ~/.xprofile
     ln -sf ${DOTFILES_HOME}/pkgs/x/Xresources ~/.Xresources
