@@ -1,8 +1,83 @@
 {
-    "workbench.colorTheme": "Default Dark+",
-    "editor.accessibilityPageSize": 12,
-    "editor.fontFamily": "monaco",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.ignoreLegacyWarning": true,
     "cmake.configureOnOpen": true,
-    "explorer.confirmDragAndDrop": false,
-    "editor.fontSize": 17
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.dvi",
+        "*.synctex.gz"
+    ],
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-silent",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+    ],
+    "[tex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+    "[latex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+    "[bibtex]": {
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+    "editor.fontSize": 15,
+    "[rust]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "remote.SSH.remotePlatform": {
+        "home": "linux"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "editor.inlineSuggest.enabled": true,
+    "notebook.output.textLineLimit": 50
 }
