@@ -8,6 +8,8 @@ export ZPLUG_HOME=~/.zplug
 
 export LSCOLORS="gxfxcxdxabegedabagacad"
 
+export PATH=$PATH:/Library/TeX/texbin
+
 # share history with other shell
 setopt share_history
 
@@ -16,6 +18,9 @@ bindkey -v
 
 autoload -Uz compinit
 compinit
+
+autoload -Uz colors
+colors
 
 #cd後自動でls
 function chpwd() { ls -v -GF --color=auto }
@@ -26,3 +31,6 @@ for i in $( ls $ZSH_CONFIG_BASE_DIR/zsh.conf.d/* )
 do
   source $i
 done
+
+source "$HOME/.cargo/env"
+source "$HOME/.rye/env"

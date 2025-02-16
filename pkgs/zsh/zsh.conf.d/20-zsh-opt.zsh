@@ -9,3 +9,5 @@ setopt hist_no_store
 setopt hist_reduce_blanks
 setopt autocd
 setopt correct
+setopt list_packed
+
