@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DOTFILES_HOME=~/dotfiles
 XDG_CONFIG_HOME=~/.config
 
@@ -7,9 +7,13 @@ ln -sf ${DOTFILES_HOME}/pkgs/alacritty/alacritty.yml ~/.alacritty.yml
 ln -sf ${DOTFILES_HOME}/pkgs/git/gitconfig ~/.gitconfig
 ln -sf ${DOTFILES_HOME}/pkgs/ssh/config ~/.ssh/config
 
+
 if [[ "$(uname -r)" == *microsoft* ]]; then
     echo "WSL specific configs"
-elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+elif [[ "$(uname)" == 'Darwin' ]]; then
+    echo "for mac"
+    ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
+elif [[ "$(expr substr "$(uname -s)" 1 5)" == "Linux" ]]; then
     echo "linux specific files"
     ln -sf ${DOTFILES_HOME}/pkgs/x/xprofile ~/.xprofile
     ln -sf ${DOTFILES_HOME}/pkgs/x/Xresources ~/.Xresources
@@ -29,13 +33,8 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     
     ln -sf ${DOTFILES_HOME}/pkgs/font/fonts.conf ${XDG_CONFIG_HOME}/fontconfig/fonts.conf
     ln -sf ${DOTFILES_HOME}/pkgs/font/71-no-embeded-bitmaps.conf ${XDG_CONFIG_HOME}/fontconfig/conf.d/71-no-embedded-bitmaps.conf
+    
+    ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/settings.json
 fi
-
-# ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json ${XDG_CONFIG_HOME}/Code/User/settings.json
-
-# cat ${DOTFILES_HOME}/pkgs/vscode/extensions | while read line
-# do
-#  code --install-extension $line > /dev/null
-# done
 
 echo "complete"
