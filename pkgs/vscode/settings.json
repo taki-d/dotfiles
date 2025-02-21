@@ -46,8 +46,8 @@
                 "-silent",
                 "-outdir=%OUTDIR%",
                 "%DOC%"
-            ],
-        },
+            ]
+        }
     ],
     "[tex]": {
         // スニペット補完中にも補完を使えるようにする
@@ -68,7 +68,7 @@
     "editor.fontSize": 15,
     "[rust]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "workbench.iconTheme": "vscode-icons",
     "remote.SSH.remotePlatform": {
