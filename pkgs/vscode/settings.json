@@ -9,7 +9,7 @@
         "PSExecutionPolicyPreference": "RemoteSigned"
     },
     // cspell
-    "cSpell.enabled": true,
+    "cSpell.enabled": false,
     "cSpell.dictionaries": [
         "en",
         "ja",
