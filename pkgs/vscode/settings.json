@@ -1,9 +1,23 @@
 {
+    "$schema": "vscode://schemas/settings/user",
     "workbench.colorTheme": "Gruvbox Dark Hard",
     "git.confirmSync": false,
     "git.autofetch": true,
     "git.ignoreLegacyWarning": true,
     "cmake.configureOnOpen": true,
+    "terminal.integrated.env.windows": {
+        "PSExecutionPolicyPreference": "RemoteSigned"
+    },
+    // cspell
+    "cSpell.enabled": true,
+    "cSpell.dictionaries": [
+        "en",
+        "ja",
+        "latex",
+        "cpp",
+        "bash"
+    ],
+    // latex workshop settings
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk 🔃",
@@ -46,8 +60,8 @@
                 "-silent",
                 "-outdir=%OUTDIR%",
                 "%DOC%"
-            ]
-        }
+            ],
+        },
     ],
     "[tex]": {
         // スニペット補完中にも補完を使えるようにする
@@ -68,7 +82,7 @@
     "editor.fontSize": 15,
     "[rust]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
     },
     "workbench.iconTheme": "vscode-icons",
     "remote.SSH.remotePlatform": {
@@ -79,5 +93,12 @@
     },
     "git.openRepositoryInParentFolders": "never",
     "editor.inlineSuggest.enabled": true,
-    "notebook.output.textLineLimit": 50
+    "notebook.output.textLineLimit": 50,
+    "editor.accessibilityPageSize": 8,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "zenMode.centerLayout": false,
+    "hediet.vscode-drawio.resizeImages": null,
+    "http.experimental.systemCertificatesV2": true
 }
