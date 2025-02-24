@@ -8,6 +8,9 @@
     "terminal.integrated.env.windows": {
         "PSExecutionPolicyPreference": "RemoteSigned"
     },
+    // shell check
+    "shellcheck.enable": true,
+    "shellcheck.run": "onSave",
     // cspell
     "cSpell.enabled": false,
     "cSpell.dictionaries": [
