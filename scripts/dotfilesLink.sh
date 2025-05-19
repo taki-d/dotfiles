@@ -14,8 +14,7 @@ elif [[ "$(uname)" == 'Darwin' ]]; then
     echo "for mac"
     ln -sf ${DOTFILES_HOME}/pkgs/vscode/settings.json "${HOME}/Library/Application Support/Code/User/settings.json"
 
-    ln -sf ${DOTFILES_HOME}/pkgs/neovim/init.vim ${XDG_CONFIG_HOME}/nvim/init.vim
-    ln -sf ${DOTFILES_HOME}/pkgs/neovim/lua ${XDG_CONFIG_HOME}/nvim/lua
+    ln -sf ${DOTFILES_HOME}/pkgs/neovim ${HOME}/.config/nvim
 
 elif [[ "$(expr substr "$(uname -s)" 1 5)" == "Linux" ]]; then
     echo "linux specific files"
