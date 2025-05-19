@@ -1,6 +1,9 @@
 {
     "$schema": "vscode://schemas/settings/user",
     "workbench.colorTheme": "Gruvbox Dark Hard",
+    "zenmode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.showTabs": "single",
     "git.confirmSync": false,
     "git.autofetch": true,
     "git.ignoreLegacyWarning": true,
@@ -8,6 +11,9 @@
     "terminal.integrated.env.windows": {
         "PSExecutionPolicyPreference": "RemoteSigned"
     },
+    // vscode neovim workaround https://github.com/vscode-neovim/vscode-neovim/issues/2407
+    // "workbench.editor.limit.enabled": true,
+    // "workbench.editor.limit.value": 5,
     // shell check
     "shellcheck.enable": true,
     "shellcheck.run": "onSave",
@@ -89,7 +95,8 @@
     },
     "workbench.iconTheme": "vscode-icons",
     "remote.SSH.remotePlatform": {
-        "home": "linux"
+        "home": "linux",
+        "az01": "linux"
     },
     "[python]": {
         "editor.formatOnType": true
@@ -103,5 +110,24 @@
     },
     "zenMode.centerLayout": false,
     "hediet.vscode-drawio.resizeImages": null,
-    "http.experimental.systemCertificatesV2": true
+    "http.experimental.systemCertificatesV2": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "git.replaceTagsWhenPull": true,
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "idf.hasWalkthroughBeenShown": true,
+    "idf.pythonInstallPath": "C:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.gitPathWin": "C:\\Espressif\\tools\\idf-git\\2.39.2\\cmd\\git.exe",
+    "idf.espIdfPath": "/Users/taki/esp/esp-idf",
+    "idf.toolsPath": "/Users/taki/.espressif",
+    "idf.gitPath": "git",
+    "redhat.telemetry.enabled": false,
+    "idf.espIdfPathWin": "C:/Espressif/frameworks/esp-idf-v5.4.1/",
+    "idf.toolsPathWin": "C:\\Espressif",
 }
