@@ -1,5 +1,9 @@
 {
     "files.associations": {
         "*.ssh": "ssh_config",
-    }
+    },
+    "[lua]": {
+        "editor.defaultFormatter": "JohnnyMorganz.stylua"
+    },
+    "editor.formatOnSave": true
 }
