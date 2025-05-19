@@ -3,7 +3,9 @@
     "workbench.colorTheme": "Gruvbox Dark Hard",
     "zenmode.centerLayout": false,
     "zenMode.hideLineNumbers": false,
+    "zenMode.centerLayout": false,
     "zenMode.showTabs": "single",
+    "zenMode.hideStatusBar": false,
     "git.confirmSync": false,
     "git.autofetch": true,
     "git.ignoreLegacyWarning": true,
@@ -108,7 +110,6 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "zenMode.centerLayout": false,
     "hediet.vscode-drawio.resizeImages": null,
     "http.experimental.systemCertificatesV2": true,
     "[json]": {
