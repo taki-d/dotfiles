@@ -16,6 +16,14 @@ if vim.g.vscode then
 			vscode.action("workbench.view.explorer")
 		end)
 	end, { desc = "VS Code open explorer" })
+
+	vim.keymap.set("n", "gr", function()
+		vscode.action("editor.action.referenceSearch.trigger")
+	end, { desc = "VS Code Go to Referenece" })
+
+	vim.keymap.set("n", "gw", function()
+		vscode.action("workbench.action.showAllSymbols")
+	end, { desc = "VS Code Show All Symbols" })
 else
 	-- normal neovim
 end
