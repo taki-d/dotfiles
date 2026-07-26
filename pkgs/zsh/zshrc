@@ -1,5 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
+typeset -U path fpath
+
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
@@ -8,16 +10,10 @@ export ZPLUG_HOME=~/.zplug
 
 export LSCOLORS="gxfxcxdxabegedabagacad"
 
-export PATH=$PATH:/Library/TeX/texbin
-
-# share history with other shell
-setopt share_history
+path+=(/Library/TeX/texbin)
 
 # set vim like keybind
 bindkey -v
-
-autoload -Uz compinit
-compinit
 
 autoload -Uz colors
 colors
@@ -31,4 +27,3 @@ for i in $( ls $ZSH_CONFIG_BASE_DIR/zsh.conf.d/* )
 do
   source $i
 done
-
