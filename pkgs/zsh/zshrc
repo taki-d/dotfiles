@@ -6,8 +6,6 @@ export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-export ZPLUG_HOME=~/.zplug
-
 export LSCOLORS="gxfxcxdxabegedabagacad"
 
 path+=(/Library/TeX/texbin)
