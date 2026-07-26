@@ -32,5 +32,3 @@ do
   source $i
 done
 
-source "$HOME/.cargo/env"
-source "$HOME/.rye/env"
