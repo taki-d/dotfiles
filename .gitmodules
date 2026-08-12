@@ -1,6 +1,3 @@
-[submodule "pkgs/ssh/include"]
-	path = pkgs/ssh/include
-	url = git@github.com:taki-d/ssh.git
 [submodule "pkgs/ssh/ssh.conf.d"]
 	path = pkgs/ssh/ssh.conf.d
 	url = git@github.com:taki-d/ssh.git
