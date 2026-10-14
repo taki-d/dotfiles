@@ -1,0 +1,21 @@
+# Public settings are managed in dotfiles.
+Host github.com
+    HostName github.com
+    User git
+
+# Private host settings are managed in the SSH submodule.
+Host *
+    Include ~/dotfiles/pkgs/ssh/hosts/cygnus.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/home.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/lab.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/lab-intrigger.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/hpcs.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/pegasuss.ssh
+    Include ~/dotfiles/pkgs/ssh/hosts/pegasus.ssh
+
+Host *
+    ServerAliveInterval 300
+    AddKeysToAgent yes
+    IgnoreUnknown UseKeychain
+    UseKeychain yes
+    SendEnv -LC_* -LANG*

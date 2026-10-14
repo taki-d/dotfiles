@@ -9,6 +9,7 @@ mkdir -p "${XDG_CONFIG_HOME}/ghostty"
 ln -sf "${DOTFILES_HOME}/pkgs/ghostty/config.ghostty" "${XDG_CONFIG_HOME}/ghostty/config.ghostty"
 
 ln -sf ${DOTFILES_HOME}/pkgs/git/gitconfig ~/.gitconfig
+mkdir -p ~/.ssh
 ln -sf ${DOTFILES_HOME}/pkgs/ssh/config ~/.ssh/config
 
 
